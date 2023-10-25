@@ -1,3 +1,5 @@
+import sys
+
 from flask import Flask, request
 
 app = Flask(__name__)
@@ -20,5 +22,8 @@ def greeting():
     return {"Message": f"Welcome {body['Name']}"}
 
 
-if __name__ == "__main__":
-    app.run()
+if __name__ == '__main__':
+    port = 5000
+    if len(sys.argv) >= 1:
+        port = 80
+    app.run(port=port)
